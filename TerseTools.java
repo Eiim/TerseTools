@@ -1,9 +1,10 @@
 /**
-  Copyright Contributors to the TerseDecompress Project.
+  Copyright Contributors to the TerseTools Project.
   SPDX-License-Identifier: Apache-2.0
 **/
 /*****************************************************************************/
 /* Copyright 2018        IBM Corp.                                           */
+/* Copyright 2020        Ethan Chapman                                       */
 /*                                                                           */
 /*   Licensed under the Apache License, Version 2.0 (the "License");         */
 /*   you may not use this file except in compliance with the License.        */
@@ -29,6 +30,9 @@
 /* Version 4 with editorial changes for publication as open source code      */
 /*          Klaus Egeler, Boris Barth  (clientcenter@de.ibm.com)             */
 /*****************************************************************************/
+/*                         Adaptation to TerseTools                          */
+/*                           Ethan Chapman (Eiim)                            */
+/*****************************************************************************/
 
 
 
@@ -36,7 +40,7 @@
 import java.io.*;
 
 
-public class TerseDecompress {
+public class TerseTools {
 
     static public final boolean Debug = false;  /* Control output of debug messages */
 
@@ -82,11 +86,10 @@ public class TerseDecompress {
     BufferedOutputStream OutputBufferedStream;
 
     static final String DetailedHelp = new String(
-          "Usage: \"TerseDecompress <input file> <output file> [-b]\"\n\n"
-         +"Java TerseDecompress will decompress a file compressed using the terse program on z/OS\n"
+          "Usage: \"TerseTools <input file> <output file> [-b]\"\n\n"
+         +"TerseTools will decompress a file compressed using the terse program on z/OS\n"
          +"Default mode is text mode, which will attempt ebcdic -> ASCII conversion\n"
          +"The -b flag turns on binary mode, no conversion will be attempted\n"
-         +"Please mail comments/suggestions to: clientcenter@de.ibm.com\n"
         );
 
     static final String Version = new String ("version 4, December 2018");
@@ -240,13 +243,13 @@ public class TerseDecompress {
         
             return new String (
                 "\n"
-                +"Version flag is " + VersionFlag +"\n"
-                +"Variable Flag is " + VariableFlag +"\n"
-                +"RecordLen1 is " + RecordLen1 +"\n"
-                +"Flags are " + Flags +"\n"
-                +"Ratio is " + Ratio +"\n"
-                +"Block Size is " + BlockSize +"\n"
-                +"RecordLen2 is " + RecordLen2 +"\n"
+                +"Version flag: " + VersionFlag +"\n"
+                +"Variable Flag: " + VariableFlag +"\n"
+                +"RecordLen1: " + RecordLen1 +"\n"
+                +"Flags: " + Flags +"\n"
+                +"Ratio: " + Ratio +"\n"
+                +"Block Size: " + BlockSize +"\n"
+                +"RecordLen2: " + RecordLen2 +"\n"
                 );
         
         }
@@ -1001,7 +1004,7 @@ public class TerseDecompress {
 
     /*
      * Currently working towards a decompress in binary mode only implementation.
-     * We assume that we get "TerseDecompress <input file> <output file>". Otherwise exit with
+     * We assume that we get "TerseTools <input file> <output file>". Otherwise exit with
      * an error message.
      */
 
@@ -1105,7 +1108,7 @@ public class TerseDecompress {
 
     public static void main (String args[]) {
 
-        TerseDecompress tersed = new TerseDecompress();
+        TerseTools tersed = new TerseTools();
         tersed.process(args);
     }
 
